@@ -1,0 +1,17 @@
+{
+  "local1":{
+     "camera1":{
+        "descricaoDoLocal":"Estação de ônibus - câmera 1",
+        "numeroPessoas":109,
+        "percentualDeLotacao":0.72,
+        "data":"24/03/2023 14:37:25"
+     },
+     "camera2":{
+        "descricaoDoLocal":"Estação de ônibus - câmera 2",
+        "numeroPessoas":73,
+        "percentualDeLotacao":0.48,
+        "data":"24/03/2023 14:39:17"
+     }
+  }
+}
+

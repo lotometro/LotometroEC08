@@ -1,18 +1,9 @@
 {
-  "camera1": {
   "id_local": 1,
   "id_camera":1,
-  "descricaoDoLocal": "Estação de ônibus - câmera 1",
+  "descricaoDoLocal": "Terminal de ônibus de Pindamonhangaba",
+  "descricaoDaCamera": "Camera Norte",
   "numeroPessoas": 109,
   "percentualDeLotacao": 0.72,
-  "data": "24/03/2023 14:37:25"
-  },
-  "camera2": {
-    "id_local": 1,
-    "id_camera":2,
-    "descricaoDoLocal": "Estação de ônibus - câmera 2",
-    "numeroPessoas": 73,
-    "percentualDeLotacao": 0.48,
-    "data": "24/03/2023 14:39:17"
-    }
+  "dataInformacao": "24/03/2023 14:37:25"
 }

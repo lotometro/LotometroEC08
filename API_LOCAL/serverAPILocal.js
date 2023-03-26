@@ -17,7 +17,7 @@ app.use(cors());
 // configurando o mongoose para se conectar ao MongoDB
 //mongodb+srv://lotometroec08:<password>@cluster0.ozbiz7i.mongodb.net/test
 //mongodb+srv://${lotometroec08}:${lotometroec08}@cluster0.ozbiz7i.mongodb.net/${LotometroAPILocal1}?retryWrites=true&w=majority
-mongoose.connect('mongodb+srv://lotometroec08:lotometroec08@cluster0.ozbiz7i.mongodb.net/test', {
+mongoose.connect('mongodb+srv://lotometroec08:lotometroec08@cluster0.ozbiz7i.mongodb.net/LotometroAPILocal1?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -29,7 +29,7 @@ const cameraSchema = new mongoose.Schema({
   descricaoDoLocal: String,
   numeroPessoas: Number,
   percentualDeLotacao: Number,
-  data: Date
+  dataInformacao: Date
 });
 const Camera = mongoose.model('Camera', cameraSchema);
 module.exports = Camera;
@@ -48,9 +48,16 @@ app.get('/obterDadosCamera', async (req, res) => {
 
 
 app.post('/inserirDadosCamera', async (req, res) => {
-  const dadoCamera = new Item(req.body);
-  await dadoCamera.save();
-  res.json(item);
+   const dadoCamera = new Camera(req.body);
+   await dadoCamera.save();
+   res.json(item);
+
+  //fs.readFile(__dirname + "/" + "dadosLocais.json", 'utf-8', function(err, data) {
+       //console.log(data);
+       //res.send(data);
+   //});
+
+   await dadoCamera.save();
 });
 
 app.delete('/items/:id', async (req, res) => {
