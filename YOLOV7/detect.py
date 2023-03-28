@@ -23,6 +23,7 @@ def detect(save_img=False):
 
     source = "video.mp4"
     weights = "yolov7.pt"
+    save_txt = True
     imgsz = 640
 
     # Directories
@@ -119,6 +120,9 @@ def detect(save_img=False):
                 for c in det[:, -1].unique():
                     n = (det[:, -1] == c).sum()  # detections per class
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
+
+                with open(txt_path + '.txt', 'a') as tt:
+                    tt.write(s)
 
                 # Write results
                 for *xyxy, conf, cls in reversed(det):

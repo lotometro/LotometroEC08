@@ -36,7 +36,7 @@ module.exports = Camera;
 
 // Endpoint para obter a lista de dados da camera
 // definindo as rotas da API REST
-app.get('/obterDadosCamera', async (req, res) => {
+app.get('/getLotacaoLocal', async (req, res) => {
   //const dadosCamera = await Camera.find();
   //res.json(dadosCamera);
 

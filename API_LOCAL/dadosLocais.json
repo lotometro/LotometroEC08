@@ -1,9 +1,22 @@
 {
-  "id_local": 1,
-  "id_camera":1,
-  "descricaoDoLocal": "Terminal de ônibus de Pindamonhangaba",
-  "descricaoDaCamera": "Camera Norte",
-  "numeroPessoas": 109,
-  "percentualDeLotacao": 0.72,
-  "dataInformacao": "24/03/2023 14:37:25"
+  "camera1":{
+      "id_local": 1,
+      "id_camera":1,
+      "descricaoDoLocal": "Terminal de ônibus de Pindamonhangaba",
+      "descricaoDaCamera": "Camera Norte",
+      "numeroPessoas": 109,
+      "percentualDeLotacao": 0.72,
+      "dataInformacao": "24/03/2023 14:37:25"
+  },
+  "camera2":{
+    "id_local": 1,
+    "id_camera":2,
+    "descricaoDoLocal": "Terminal de ônibus de Pindamonhangaba",
+    "descricaoDaCamera": "Camera Sul",
+    "numeroPessoas": 127,
+    "percentualDeLotacao": 0.85,
+    "dataInformacao": "24/03/2023 14:37:25"
+  }
 }
+
+
