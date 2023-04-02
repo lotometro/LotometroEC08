@@ -1,5 +1,6 @@
 import argparse
 import time
+from datetime import datetime
 from pathlib import Path
 
 import cv2
@@ -21,7 +22,17 @@ def detect(save_img=False):
     webcam = source.isnumeric() or source.endswith('.txt') or source.lower().startswith(
         ('rtsp://', 'rtmp://', 'http://', 'https://'))
 
-    source = "video.mp4"
+    # parametros de acesso a camera
+    USERNAME = 'admin'
+    PASSWORD = '12345678'
+    IP = '192.168.0.100'
+    PORT = '4747'
+
+    # URL no formato do app droid cam para teste utilizando camera de celular - não pode estar sendo visualizado no navegador
+    URL = 'http://{}:{}/video'.format(IP, PORT)
+
+    webcam = True
+    source = URL
     weights = "yolov7.pt"
     save_txt = True
     imgsz = 640
@@ -121,16 +132,21 @@ def detect(save_img=False):
                     n = (det[:, -1] == c).sum()  # detections per class
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
 
+                # Escrever dados lidos em txt
                 with open(txt_path + '.txt', 'a') as tt:
+                    tt.write('Camera | ' + str(1) + '  |\n')
+                    tt.write('Data | ' + str(datetime.now()) + '  |\n')
+                    tt.write('Detecções |')
                     tt.write(s)
+                    tt.write('\n')
 
                 # Write results
                 for *xyxy, conf, cls in reversed(det):
                     if save_txt:  # Write to file
                         xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                         line = (cls, *xywh, conf) if opt.save_conf else (cls, *xywh)  # label format
-                        with open(txt_path + '.txt', 'a') as f:
-                            f.write(('%g ' * len(line)).rstrip() % line + '\n')
+                        #with open(txt_path + '.txt', 'a') as f:
+                            #f.write(('%g ' * len(line)).rstrip() % line + '\n')
 
                     if save_img or view_img:  # Add bbox to image
                         label = f'{names[int(cls)]} {conf:.2f}'
