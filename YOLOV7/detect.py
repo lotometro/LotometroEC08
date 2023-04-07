@@ -7,7 +7,9 @@ import cv2
 import torch
 import torch.backends.cudnn as cudnn
 from numpy import random
+import pymongo
 
+from YOLOV7.jsonbuilder import construir_json
 from models.experimental import attempt_load
 from utils.datasets import LoadStreams, LoadImages
 from utils.general import check_img_size, check_requirements, check_imshow, non_max_suppression, apply_classifier, \
@@ -22,10 +24,19 @@ def detect(save_img=False):
     webcam = source.isnumeric() or source.endswith('.txt') or source.lower().startswith(
         ('rtsp://', 'rtmp://', 'http://', 'https://'))
 
+    # Acesso ao banco de dados
+    # Crie uma conexão com o MongoDB Atlas
+    client = pymongo.MongoClient(
+        "mongodb+srv://lotometroec08:lotometroec08@cluster0.ozbiz7i.mongodb.net/test?authSource=admin&replicaSet=atlas-4nfs83-shard-0&readPreference=primary&ssl=true")
+
+    # Selecione uma coleção onde o documento será armazenado
+    db = client.test_database
+    collection = db.camera_data
+
     # parametros de acesso a camera
     USERNAME = 'admin'
     PASSWORD = '12345678'
-    IP = '192.168.0.100'
+    IP = '192.168.0.101'
     PORT = '4747'
 
     # URL no formato do app droid cam para teste utilizando camera de celular - não pode estar sendo visualizado no navegador
@@ -91,7 +102,8 @@ def detect(save_img=False):
             img = img.unsqueeze(0)
 
         # Warmup
-        if device.type != 'cpu' and (old_img_b != img.shape[0] or old_img_h != img.shape[2] or old_img_w != img.shape[3]):
+        if device.type != 'cpu' and (
+                old_img_b != img.shape[0] or old_img_h != img.shape[2] or old_img_w != img.shape[3]):
             old_img_b = img.shape[0]
             old_img_h = img.shape[2]
             old_img_w = img.shape[3]
@@ -100,7 +112,7 @@ def detect(save_img=False):
 
         # Inference
         t1 = time_synchronized()
-        with torch.no_grad():   # Calculating gradients would cause a GPU memory leak
+        with torch.no_grad():  # Calculating gradients would cause a GPU memory leak
             pred = model(img, augment=opt.augment)[0]
         t2 = time_synchronized()
 
@@ -140,13 +152,22 @@ def detect(save_img=False):
                     tt.write(s)
                     tt.write('\n')
 
+                # Construir json com dados para enviar ao Mongo db
+                # A cada 50 iterações um json sera construído, para não sobrecarregar os envios ao mongo db
+                if i % 50 == 0:
+                    data = construir_json(s)
+
+                    # inserir o json na coleção
+                    collection.insert_one(data)
+                    print("Dados enviados ao MongoDB")
+
                 # Write results
                 for *xyxy, conf, cls in reversed(det):
                     if save_txt:  # Write to file
                         xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                         line = (cls, *xywh, conf) if opt.save_conf else (cls, *xywh)  # label format
-                        #with open(txt_path + '.txt', 'a') as f:
-                            #f.write(('%g ' * len(line)).rstrip() % line + '\n')
+                        # with open(txt_path + '.txt', 'a') as f:
+                        # f.write(('%g ' * len(line)).rstrip() % line + '\n')
 
                     if save_img or view_img:  # Add bbox to image
                         label = f'{names[int(cls)]} {conf:.2f}'
@@ -182,7 +203,7 @@ def detect(save_img=False):
 
     if save_txt or save_img:
         s = f"\n{len(list(save_dir.glob('labels/*.txt')))} labels saved to {save_dir / 'labels'}" if save_txt else ''
-        #print(f"Results saved to {save_dir}{s}")
+        # print(f"Results saved to {save_dir}{s}")
 
     print(f'Done. ({time.time() - t0:.3f}s)')
 
@@ -209,7 +230,7 @@ if __name__ == '__main__':
     parser.add_argument('--no-trace', action='store_true', help='don`t trace model')
     opt = parser.parse_args()
     print(opt)
-    #check_requirements(exclude=('pycocotools', 'thop'))
+    # check_requirements(exclude=('pycocotools', 'thop'))
 
     with torch.no_grad():
         if opt.update:  # update all models (to fix SourceChangeWarning)
