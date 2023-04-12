@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\082190011\\source\\repos\\LotometroSolution\\LotometroAPI\\LotometroAPI.csproj": {}
+    "C:\\Users\\082190011\\Documents\\GitHub\\LotometroEC08\\LotometroVSResources\\LotometroAPI\\LotometroAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\082190011\\source\\repos\\LotometroSolution\\LotometroAPI\\LotometroAPI.csproj": {
+    "C:\\Users\\082190011\\Documents\\GitHub\\LotometroEC08\\LotometroVSResources\\LotometroAPI\\LotometroAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\082190011\\source\\repos\\LotometroSolution\\LotometroAPI\\LotometroAPI.csproj",
+        "projectUniqueName": "C:\\Users\\082190011\\Documents\\GitHub\\LotometroEC08\\LotometroVSResources\\LotometroAPI\\LotometroAPI.csproj",
         "projectName": "LotometroAPI",
-        "projectPath": "C:\\Users\\082190011\\source\\repos\\LotometroSolution\\LotometroAPI\\LotometroAPI.csproj",
+        "projectPath": "C:\\Users\\082190011\\Documents\\GitHub\\LotometroEC08\\LotometroVSResources\\LotometroAPI\\LotometroAPI.csproj",
         "packagesPath": "C:\\Users\\082190011\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\082190011\\source\\repos\\LotometroSolution\\LotometroAPI\\obj\\",
+        "outputPath": "C:\\Users\\082190011\\Documents\\GitHub\\LotometroEC08\\LotometroVSResources\\LotometroAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -52,6 +52,10 @@
             "MongoDB.Bson": {
               "target": "Package",
               "version": "[2.19.1, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.19.1, )"
             }
           },
           "imports": [
@@ -73,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

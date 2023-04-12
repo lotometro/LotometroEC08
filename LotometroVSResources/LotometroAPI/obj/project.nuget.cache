@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Iyul7u5Rwo5D+YWyYXNytdf52OEoxlg2Lj08HSl90PElWpuYUlo+Yz5QP/jsFKvm7b+PfToJLjPZBZi/HiDgKg==",
+  "dgSpecHash": "cYFNaQORB4kweiCHSNvTE5uzEtyKhYo4vSjz5PepT+Q/L7zGng6PlO9b5MDRVUcrLrQUI5y/wWk87xJ19brTww==",
   "success": true,
-  "projectFilePath": "C:\\Users\\082190011\\source\\repos\\LotometroSolution\\LotometroAPI\\LotometroAPI.csproj",
+  "projectFilePath": "C:\\Users\\082190011\\Documents\\GitHub\\LotometroEC08\\LotometroVSResources\\LotometroAPI\\LotometroAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\082190011\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
+    "C:\\Users\\082190011\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
+    "C:\\Users\\082190011\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\082190011\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.4\\microsoft.entityframeworkcore.7.0.4.nupkg.sha512",
     "C:\\Users\\082190011\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.4\\microsoft.entityframeworkcore.abstractions.7.0.4.nupkg.sha512",
     "C:\\Users\\082190011\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.4\\microsoft.entityframeworkcore.analyzers.7.0.4.nupkg.sha512",
@@ -15,8 +18,19 @@
     "C:\\Users\\082190011\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\082190011\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\082190011\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\082190011\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\082190011\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\082190011\\.nuget\\packages\\mongodb.bson\\2.19.1\\mongodb.bson.2.19.1.nupkg.sha512",
-    "C:\\Users\\082190011\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\082190011\\.nuget\\packages\\mongodb.driver\\2.19.1\\mongodb.driver.2.19.1.nupkg.sha512",
+    "C:\\Users\\082190011\\.nuget\\packages\\mongodb.driver.core\\2.19.1\\mongodb.driver.core.2.19.1.nupkg.sha512",
+    "C:\\Users\\082190011\\.nuget\\packages\\mongodb.libmongocrypt\\1.7.0\\mongodb.libmongocrypt.1.7.0.nupkg.sha512",
+    "C:\\Users\\082190011\\.nuget\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
+    "C:\\Users\\082190011\\.nuget\\packages\\snappier\\1.0.0\\snappier.1.0.0.nupkg.sha512",
+    "C:\\Users\\082190011\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\082190011\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\082190011\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\082190011\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\Users\\082190011\\.nuget\\packages\\zstdsharp.port\\0.6.2\\zstdsharp.port.0.6.2.nupkg.sha512"
   ],
   "logs": []
 }

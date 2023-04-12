@@ -1,14 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LotometroAPI.Interfaces;
+using LotometroAPI.Repository;
+using LotometroAPI.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LotometroAPI.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class MonitoringController : Controller
     {
-        [HttpGet, Route("GetById/{id}")]
-        public IActionResult GetById(int id)
+        private readonly ICameraService _cameraService;
+
+        public MonitoringController([FromServices] ICameraService cameraService)
         {
-            return Ok("Hello World");
+            _cameraService = cameraService;
+        }
+
+        [HttpGet, Route("GetList")]
+        public IActionResult GetList()
+        {
+            return Ok(_cameraService.Get());
+        }
+
+        [HttpGet, Route("GetById/{id}")]
+        public IActionResult GetById(string id)
+        {
+            return Ok(_cameraService.Get(id));
         }
 
         [HttpGet, Route("CalculateProdutorio/iterative/{m}/{n}")]
