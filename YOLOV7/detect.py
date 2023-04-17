@@ -9,14 +9,13 @@ import torch.backends.cudnn as cudnn
 from numpy import random
 import pymongo
 
-from YOLOV7.jsonbuilder import construir_json
+from jsonbuilder import construir_json
 from models.experimental import attempt_load
 from utils.datasets import LoadStreams, LoadImages
 from utils.general import check_img_size, check_requirements, check_imshow, non_max_suppression, apply_classifier, \
     scale_coords, xyxy2xywh, strip_optimizer, set_logging, increment_path
 from utils.plots import plot_one_box
 from utils.torch_utils import select_device, load_classifier, time_synchronized, TracedModel
-
 
 def detect(save_img=False):
     source, weights, view_img, save_txt, imgsz, trace = opt.source, opt.weights, opt.view_img, opt.save_txt, opt.img_size, not opt.no_trace
@@ -36,14 +35,15 @@ def detect(save_img=False):
     # parametros de acesso a camera
     USERNAME = 'admin'
     PASSWORD = '12345678'
-    IP = '192.168.0.101'
+    IP = '192.168.100.36'
     PORT = '4747'
 
     # URL no formato do app droid cam para teste utilizando camera de celular - não pode estar sendo visualizado no navegador
     URL = 'http://{}:{}/video'.format(IP, PORT)
 
     webcam = True
-    source = URL
+    #source = URL
+    source = "0"
     weights = "yolov7.pt"
     save_txt = True
     imgsz = 640
@@ -124,6 +124,8 @@ def detect(save_img=False):
         if classify:
             pred = apply_classifier(pred, modelc, img, im0s)
 
+        j = 0
+
         # Process detections
         for i, det in enumerate(pred):  # detections per image
             if webcam:  # batch_size >= 1
@@ -154,7 +156,7 @@ def detect(save_img=False):
 
                 # Construir json com dados para enviar ao Mongo db
                 # A cada 50 iterações um json sera construído, para não sobrecarregar os envios ao mongo db
-                if i % 50 == 0:
+                if j % 50 == 0:
                     data = construir_json(s)
 
                     # inserir o json na coleção

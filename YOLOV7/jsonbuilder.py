@@ -1,5 +1,5 @@
 from datetime import datetime
-from YOLOV7.obterpessoas import obter_quantidade_pessoas
+from obterpessoas import obter_quantidade_pessoas
 
 
 def construir_json(dados):
