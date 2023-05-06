@@ -29,13 +29,13 @@ def detect(save_img=False):
         "mongodb+srv://lotometroec08:lotometroec08@cluster0.ozbiz7i.mongodb.net/test?authSource=admin&replicaSet=atlas-4nfs83-shard-0&readPreference=primary&ssl=true")
 
     # Selecione uma coleção onde o documento será armazenado
-    db = client.test_database
-    collection = db.camera_data
+    db = client.lotometrodtb
+    collection = db.camera
 
     # parametros de acesso a camera
     USERNAME = 'admin'
     PASSWORD = '12345678'
-    IP = '192.168.100.36'
+    IP = '192.168.18.6'
     PORT = '4747'
 
     # URL no formato do app droid cam para teste utilizando camera de celular - não pode estar sendo visualizado no navegador
