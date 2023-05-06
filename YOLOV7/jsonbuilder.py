@@ -11,15 +11,15 @@ def construir_json(dados):
     numerolotacao = 30
 
     data = {
-        "Camera 1": {
-            "id_local": idlocal,
-            "id_camera": idcamera,
-            "descricaoDoLocal": descricaodolocal,
-            "descricaoDaCamera": descricaodacamera,
+            "idLocal": idlocal,
+            "idCamera": idcamera,
+            # "descricaoDoLocal": descricaodolocal,
+            # "descricaoDaCamera": descricaodacamera,
+            "lotacaoMaxima": numerolotacao,
             "numeroPessoas": obter_quantidade_pessoas(dados),
-            "percentualDeLotacao": int(obter_quantidade_pessoas(dados)) / numerolotacao,
+            # "percentualDeLotacao": ((int(obter_quantidade_pessoas(dados)) / numerolotacao) * 100) + "%",
+            "percentualDeLotacao": str((int(obter_quantidade_pessoas(dados)) / numerolotacao) * 100) + "%",
             "dataInformacao": datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-        }
     }
 
     return data
